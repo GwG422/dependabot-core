@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  tests:
+  build_and_run_tests:
     docker:
       # Any image that includes the docker client will do
       - image: circleci/ruby
@@ -119,37 +119,6 @@ jobs:
               echo "No Docker credentials, skipping push"
             fi
 
-  test_core:
-    docker:
-      - image: dependabot/dependabot-core:0.1.47
-    working_directory: ~/dependabot-core
-    steps:
-      - checkout
-
-      - restore_cache:
-          keys:
-            - v1-dependencies-{{ .Branch }}
-            - v1-dependencies-main
-
-      # Install dependencies
-      - run: cd npm_and_yarn/helpers && yarn install
-
-      - save_cache:
-          key: v1-dependencies-{{ .Branch }}-{{ epoch }}
-          paths:
-            - ~/dependabot-core/npm_and_yarn/helpers/node_modules
-
-      # Run code formatting linters
-      - run: cd npm_and_yarn/helpers && yarn lint
-
-      # Run tests
-      - run: cd npm_and_yarn/helpers && yarn test
-
-      - store_test_results:
-          path: ~/rspec
-      - store_artifacts:
-          path: ~/rspec
-
   release_gems:
     docker:
       - image: dependabot/dependabot-core:latest
@@ -167,7 +136,7 @@ workflows:
   version: 2
   test:
     jobs:
-      - tests
+      - build_and_run_tests
       - release_gems:
           filters:
             branches:
