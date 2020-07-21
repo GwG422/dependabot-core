@@ -5,8 +5,8 @@
     "helper": "run.js"
   },
   "scripts": {
-    "lint": "eslint .",
-    "test": "jest"
+    "lint": "node_modules/.bin/eslint .",
+    "test": "node_modules/.bin/jest"
   },
   "dependencies": {
     "@dependabot/yarn-lib": "^1.21.1",

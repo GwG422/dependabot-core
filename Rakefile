@@ -52,13 +52,6 @@ namespace :ci do
       run_command("cd #{package} && bundle exec rspec spec")
     end
   end
-
-  task :javascript do
-    puts "Running js linter"
-    run_command("cd npm_and_yarn/helpers && yarn lint")
-    puts "Running js tests"
-    run_command("cd npm_and_yarn/helpers && yarn test")
-  end
 end
 
 # rubocop:disable Metrics/BlockLength

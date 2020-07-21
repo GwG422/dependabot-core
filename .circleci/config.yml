@@ -71,12 +71,20 @@ jobs:
               .
 
       - run:
-          name: JS linter and tests
+          name: JS linter
           command: |
             docker run \
               --env "CIRCLE_COMPARE_URL=$CIRCLE_COMPARE_URL" \
               -ti dependabot/dependabot-core-ci \
-              bash -c "rake ci:javascript"
+              bash -c "cd /opt/npm_and_yarn/helpers && yarn lint"
+
+      - run:
+          name: JS tests
+          command: |
+            docker run \
+              --env "CIRCLE_COMPARE_URL=$CIRCLE_COMPARE_URL" \
+              -ti dependabot/dependabot-core-ci \
+              bash -c "cd /opt/npm_and_yarn/helpers && yarn test"
 
       - run:
           name: Rubocop
