@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  build_and_test_reorg:
+  tests:
     docker:
       # Any image that includes the docker client will do
       - image: circleci/ruby
@@ -69,6 +69,14 @@ jobs:
               --cache-from "dependabot/dependabot-core-ci:ci--$BRANCH_TAG" \
               --cache-from "dependabot/dependabot-core-ci:latest" \
               .
+
+      - run:
+          name: JS linter and tests
+          command: |
+            docker run \
+              --env "CIRCLE_COMPARE_URL=$CIRCLE_COMPARE_URL" \
+              -ti dependabot/dependabot-core-ci \
+              bash -c "rake ci:javascript"
 
       - run:
           name: Rubocop
@@ -159,8 +167,7 @@ workflows:
   version: 2
   test:
     jobs:
-      - test_core
-      - build_and_test_reorg
+      - tests
       - release_gems:
           filters:
             branches:
