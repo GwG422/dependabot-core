@@ -16,13 +16,13 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-          image_name: "jurre/dependabot-core-ci"
+          image_name: "dependabot/dependabot-core-ci"
           dockerfile: "Dockerfile.ci"
           image_tag: ${{ github.sha }}
   rubocop:
     name: Rubocop
     runs-on: ubuntu-latest
-    container: jurre/dependabot-core-ci:${{ github.sha }}
+    container: dependabot/dependabot-core-ci:${{ github.sha }}
     needs: ci-image
     steps:
       - name: Run Rubocop linting
@@ -32,7 +32,7 @@ jobs:
   bundler:
     name: Bundler
     runs-on: ubuntu-latest
-    container: jurre/dependabot-core-ci:${{ github.sha }}
+    container: dependabot/dependabot-core-ci:${{ github.sha }}
     needs: ci-image
     steps:
       - name: Run bundler tests
@@ -42,7 +42,7 @@ jobs:
   cargo:
     name: Cargo
     runs-on: ubuntu-latest
-    container: jurre/dependabot-core-ci:${{ github.sha }}
+    container: dependabot/dependabot-core-ci:${{ github.sha }}
     needs: ci-image
     steps:
       - name: Run cargo tests
@@ -52,7 +52,7 @@ jobs:
   common:
     name: Common
     runs-on: ubuntu-latest
-    container: jurre/dependabot-core-ci:${{ github.sha }}
+    container: dependabot/dependabot-core-ci:${{ github.sha }}
     needs: ci-image
     steps:
       - name: Run common tests
@@ -62,7 +62,7 @@ jobs:
   composer:
     name: Composer
     runs-on: ubuntu-latest
-    container: jurre/dependabot-core-ci:${{ github.sha }}
+    container: dependabot/dependabot-core-ci:${{ github.sha }}
     needs: ci-image
     steps:
       - name: Run composer tests
@@ -72,7 +72,7 @@ jobs:
   dep:
     name: Dep
     runs-on: ubuntu-latest
-    container: jurre/dependabot-core-ci:${{ github.sha }}
+    container: dependabot/dependabot-core-ci:${{ github.sha }}
     needs: ci-image
     steps:
       - name: Run dep tests
@@ -82,7 +82,7 @@ jobs:
   docker:
     name: Docker
     runs-on: ubuntu-latest
-    container: jurre/dependabot-core-ci:${{ github.sha }}
+    container: dependabot/dependabot-core-ci:${{ github.sha }}
     needs: ci-image
     steps:
       - name: Run docker tests
@@ -92,7 +92,7 @@ jobs:
   elm:
     name: Elm
     runs-on: ubuntu-latest
-    container: jurre/dependabot-core-ci:${{ github.sha }}
+    container: dependabot/dependabot-core-ci:${{ github.sha }}
     needs: ci-image
     steps:
       - name: Run elm tests
@@ -102,7 +102,7 @@ jobs:
   git-submodules:
     name: Git submodules
     runs-on: ubuntu-latest
-    container: jurre/dependabot-core-ci:${{ github.sha }}
+    container: dependabot/dependabot-core-ci:${{ github.sha }}
     needs: ci-image
     steps:
       - name: Run git submodules tests
@@ -112,7 +112,7 @@ jobs:
   go-modules:
     name: Go modules
     runs-on: ubuntu-latest
-    container: jurre/dependabot-core-ci:${{ github.sha }}
+    container: dependabot/dependabot-core-ci:${{ github.sha }}
     needs: ci-image
     steps:
       - name: Run go modules tests
@@ -122,7 +122,7 @@ jobs:
   gradle:
     name: Gradle
     runs-on: ubuntu-latest
-    container: jurre/dependabot-core-ci:${{ github.sha }}
+    container: dependabot/dependabot-core-ci:${{ github.sha }}
     needs: ci-image
     steps:
       - name: Run gradle tests
@@ -132,7 +132,7 @@ jobs:
   hex:
     name: Hex
     runs-on: ubuntu-latest
-    container: jurre/dependabot-core-ci:${{ github.sha }}
+    container: dependabot/dependabot-core-ci:${{ github.sha }}
     needs: ci-image
     steps:
       - name: Run hex tests
@@ -142,7 +142,7 @@ jobs:
   maven:
     name: Maven
     runs-on: ubuntu-latest
-    container: jurre/dependabot-core-ci:${{ github.sha }}
+    container: dependabot/dependabot-core-ci:${{ github.sha }}
     needs: ci-image
     steps:
       - name: Run maven tests
@@ -152,7 +152,7 @@ jobs:
   npm-and-yarn:
     name: npm and yarn
     runs-on: ubuntu-latest
-    container: jurre/dependabot-core-ci:${{ github.sha }}
+    container: dependabot/dependabot-core-ci:${{ github.sha }}
     needs: ci-image
     steps:
       - name: Run npn and yarn tests
@@ -162,7 +162,7 @@ jobs:
   nuget:
     name: Nuget
     runs-on: ubuntu-latest
-    container: jurre/dependabot-core-ci:${{ github.sha }}
+    container: dependabot/dependabot-core-ci:${{ github.sha }}
     needs: ci-image
     steps:
       - name: Run nuget tests
@@ -172,7 +172,7 @@ jobs:
   omnibus:
     name: Omnibus
     runs-on: ubuntu-latest
-    container: jurre/dependabot-core-ci:${{ github.sha }}
+    container: dependabot/dependabot-core-ci:${{ github.sha }}
     needs: ci-image
     steps:
       - name: Run omnibus tests
@@ -182,7 +182,7 @@ jobs:
   python:
     name: Python
     runs-on: ubuntu-latest
-    container: jurre/dependabot-core-ci:${{ github.sha }}
+    container: dependabot/dependabot-core-ci:${{ github.sha }}
     needs: ci-image
     steps:
       - name: Run python tests
@@ -192,7 +192,7 @@ jobs:
   terraform:
     name: Terraform
     runs-on: ubuntu-latest
-    container: jurre/dependabot-core-ci:${{ github.sha }}
+    container: dependabot/dependabot-core-ci:${{ github.sha }}
     needs: ci-image
     steps:
       - name: Run terraform tests
