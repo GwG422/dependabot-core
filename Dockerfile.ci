@@ -5,6 +5,8 @@ ENV BUNDLE_PATH="/home/dependabot/.bundle" \
     BUNDLE_BIN=".bundle/binstubs" \
     PATH=".bundle/binstubs:$PATH:/home/dependabot/.bundle/bin"
 
+RUN gem install rake
+
 COPY common/ /home/dependabot/dependabot-core/common/
 RUN cd common && bundle install
 
@@ -75,8 +77,6 @@ RUN cd bundler && bundle install
 RUN mkdir -p /home/dependabot/dependabot-core/omnibus
 COPY omnibus/ /home/dependabot/dependabot-core/omnibus/
 RUN cd omnibus && bundle install
-
-RUN gem install rake
 
 COPY Rakefile \
      .rubocop.yml \
